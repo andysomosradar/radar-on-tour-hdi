@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Radar On Tour - Viaje a León</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --azul: #222F47;
+      --celeste: #A3BDCB;
+      --beige: #D9C6B1;
+      --gris: #242424;
+      --fondo: #F5F6F7;
+      --blanco: #FFFFFF;
+      --borde: #E5E7EA;
+      --sombra: 0 10px 26px rgba(34,47,71,.10);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Roboto", Arial, sans-serif;
+      background: var(--fondo);
+      color: var(--gris);
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    .header {
+      background: var(--azul);
+      color: white;
+      padding: 18px 20px 22px;
+    }
+
+    .header-inner {
+      max-width: 1080px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 18px;
+      align-items: start;
+    }
+
+    .logo {
+      width: 150px;
+      display: block;
+      margin-bottom: 18px;
+    }
+
+    .eyebrow {
+      margin: 0 0 5px;
+      font-size: 12px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--celeste);
+      font-weight: 500;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(27px, 5vw, 42px);
+      line-height: 1.05;
+      font-weight: 600;
+    }
+
+    .desc {
+      margin: 10px 0 0;
+      max-width: 660px;
+      font-size: 15px;
+      line-height: 1.45;
+      color: rgba(255,255,255,.86);
+      font-weight: 300;
+    }
+
+    .updated {
+      font-size: 12px;
+      color: rgba(255,255,255,.85);
+      background: rgba(255,255,255,.09);
+      border: 1px solid rgba(255,255,255,.16);
+      border-radius: 999px;
+      padding: 8px 11px;
+      white-space: nowrap;
+    }
+
+    main {
+      max-width: 1080px;
+      margin: auto;
+      padding: 18px 16px 42px;
+    }
+
+    .weather-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .weather-card {
+      background: white;
+      border: 1px solid var(--borde);
+      border-radius: 18px;
+      padding: 13px;
+      box-shadow: 0 8px 20px rgba(34,47,71,.06);
+      min-height: 82px;
+    }
+
+    .weather-card span {
+      display: block;
+      font-size: 12px;
+      color: #666;
+      margin-bottom: 5px;
+    }
+
+    .weather-card strong {
+      display: block;
+      color: var(--azul);
+      font-size: 18px;
+      font-weight: 600;
+      line-height: 1.2;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 12px;
+    }
+
+    .hito {
+      background: white;
+      border: 1px solid var(--borde);
+      border-radius: 20px;
+      padding: 15px;
+      box-shadow: 0 7px 18px rgba(34,47,71,.06);
+      transition: transform .16s ease, box-shadow .16s ease;
+    }
+
+    .hito:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--sombra);
+    }
+
+    .hito.destacado {
+      border-left: 7px solid var(--beige);
+      background: linear-gradient(90deg, rgba(217,198,177,.20), #fff 22%);
+    }
+
+    .hito-top {
+      display: grid;
+      grid-template-columns: 105px 1fr;
+      gap: 14px;
+      align-items: start;
+    }
+
+    .hora {
+      background: var(--azul);
+      color: white;
+      border-radius: 15px;
+      padding: 10px 8px;
+      text-align: center;
+      font-weight: 600;
+      font-size: 15px;
+      line-height: 1.2;
+    }
+
+    .hora small {
+      display: block;
+      margin-top: 3px;
+      font-size: 12px;
+      color: rgba(255,255,255,.75);
+      font-weight: 400;
+    }
+
+    .hito h2 {
+      margin: 0;
+      color: var(--azul);
+      font-size: 20px;
+      line-height: 1.2;
+      font-weight: 600;
+    }
+
+    .capsula {
+      display: inline-block;
+      margin: 7px 0 0;
+      background: rgba(163,189,203,.35);
+      color: var(--azul);
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .participantes {
+      margin: 8px 0 0;
+      font-size: 13px;
+      color: #555;
+      font-weight: 500;
+    }
+
+    .direccion {
+      margin: 7px 0 0;
+      font-size: 13px;
+      color: #666;
+      line-height: 1.35;
+    }
+
+    .acciones {
+      margin-top: 13px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .btn {
+      border: 1px solid var(--borde);
+      background: white;
+      color: var(--azul);
+      padding: 9px 10px;
+      border-radius: 13px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      text-align: center;
+      transition: transform .15s ease, background .15s ease, border .15s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      background: #F1F5F7;
+      border-color: var(--celeste);
+    }
+
+    .btn.primary {
+      background: var(--azul);
+      color: white;
+      border-color: var(--azul);
+    }
+
+    .box {
+      margin-top: 11px;
+      border: 1px solid var(--borde);
+      border-radius: 15px;
+      padding: 11px 12px;
+      background: #FAFAFA;
+    }
+
+    .box h3 {
+      margin: 0 0 5px;
+      color: var(--azul);
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .box p {
+      margin: 0;
+      font-size: 13px;
+      line-height: 1.4;
+    }
+
+    .footer {
+      margin-top: 24px;
+      text-align: center;
+      font-size: 12px;
+      color: #666;
+    }
+
+    @media (max-width: 760px) {
+      .header-inner { grid-template-columns: 1fr; }
+      .updated { width: fit-content; }
+
+      .weather-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .hito-top {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      .hora {
+        width: fit-content;
+        min-width: 105px;
+      }
+
+      .acciones {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .btn {
+        font-size: 12px;
+        padding: 9px 7px;
+      }
+    }
+
+    @media (max-width: 390px) {
+      .acciones {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <div>
+      <img class="logo" src="assets/radar-logotipo-blanco.png" alt="Radar">
+      <p class="eyebrow">Hoja de viaje</p>
+      <h1>Radar On Tour - Viaje a León</h1>
+      <p class="desc">Itinerario ejecutivo con accesos rápidos, clima, mapas, contactos y documentos clave.</p>
+    </div>
+
+    <div class="updated">Actualizado: 26 abril · 21:30</div>
+  </div>
+</header>
+
+<main>
+
+  <section class="weather-grid">
+    <div class="weather-card">
+      <span>Hora actual</span>
+      <strong id="reloj">--:--</strong>
+    </div>
+    <div class="weather-card">
+      <span>Clima actual · León</span>
+      <strong>☀️ 18°C · despejado</strong>
+    </div>
+    <div class="weather-card">
+      <span>Domingo noche</span>
+      <strong>🌤️ 18°C · fresco</strong>
+    </div>
+    <div class="weather-card">
+      <span>Lunes</span>
+      <strong>☀️ 34° / 18°</strong>
+    </div>
+  </section>
+
+  <section id="timeline" class="timeline"></section>
+
+  <footer class="footer">
+    Radar On Tour · Viaje a León · 26 y 27 de abril de 2026
+  </footer>
+
+</main>
+
+<script>
+/*
+  ============================================================
+  ZONA EDITABLE
+  Para agregar o borrar actividades, modifica solo esta lista.
+  destacado: true = hito principal con widgets completos.
+  ============================================================
+*/
+
+const HITOS = [
+  {
+    fecha: "domingo, 26 de abril",
+    inicio: "17:00",
+    fin: "21:00",
+    lugar: "Carro",
+    evento: "Viaje CDMX a León",
+    participantes: "Amanda · Herbert",
+    direccion: "",
+    destacado: false,
+    modulos: { mapa:false, telefono:false, reserva:false, nota:true },
+    nota: "Clima frío en la noche. Llevar chamarra."
+  },
+  {
+    fecha: "domingo, 26 de abril",
+    inicio: "21:00",
+    fin: "21:35",
+    lugar: "Carro",
+    evento: "Desplazamiento al Hotel Hyatt Centric Campestre León",
+    participantes: "Amanda · Herbert",
+    direccion: "P.º de los Insurgentes 3360, 37330 León de los Aldama, Gto.",
+    destacado: true,
+    modulos: { mapa:true, telefono:true, reserva:true, nota:true },
+    mapa: "https://maps.app.goo.gl/nfHsYeEXKF1U8ZzV8",
+    telefono: "4776371234",
+    reserva: "",
+    reservaTexto: "Pendiente",
+    nota: "Habitación pagada. Incluye desayuno buffet."
+  },
+  {
+    fecha: "domingo, 26 de abril",
+    inicio: "21:35",
+    fin: "22:00",
+    lugar: "Hotel",
+    evento: "Check-in",
+    participantes: "Amanda · Herbert",
+    direccion: "P.º de los Insurgentes 3360, 37330 León de los Aldama, Gto.",
+    destacado: false,
+    modulos: { mapa:false, telefono:false, reserva:false, nota:false }
+  },
+  {
+    fecha: "domingo, 26 de abril",
+    inicio: "22:00",
+    fin: "22:15",
+    lugar: "Hotel",
+    evento: "Acomodación",
+    participantes: "Amanda · Herbert",
+    direccion: "P.º de los Insurgentes 3360, 37330 León de los Aldama, Gto.",
+    destacado: false,
+    modulos: { mapa:false, telefono:false, reserva:false, nota:false }
+  },
+  {
+    fecha: "domingo, 26 de abril",
+    inicio: "22:15",
+    fin: "23:00",
+    lugar: "Hotel",
+    evento: "Cena — comprar en el hotel",
+    participantes: "Amanda · Herbert",
+    direccion: "P.º de los Insurgentes 3360, 37330 León de los Aldama, Gto.",
+    destacado: false,
+    modulos: { mapa:false, telefono:false, reserva:false, nota:false }
+  },
+  {
+    fecha: "lunes, 27 de abril",
+    inicio: "08:30",
+    fin: "09:15",
+    lugar: "Hotel",
+    evento: "Desayuno buffet",
+    participantes: "Amanda · Herbert",
+    direccion: "P.º de los Insurgentes 3360, 37330 León de los Aldama, Gto.",
+    destacado: false,
+    modulos: { mapa:false, telefono:false, reserva:false, nota:false }
+  },
+  {
+    fecha: "lunes, 27 de abril",
+    inicio: "09:15",
+    fin: "09:45",
+    lugar: "Hotel",
+    evento: "Preparación y checkout",
+    participantes: "Amanda · Herbert",
+    direccion: "P.º de los Insurgentes 3360, 37330 León de los Aldama, Gto.",
+    destacado: false,
+    modulos: { mapa:false, telefono:false, reserva:false, nota:false }
+  },
+  {
+    fecha: "lunes, 27 de abril",
+    inicio: "10:00",
+    fin: "10:15",
+    lugar: "HDI",
+    evento: "Llegada a la compañía con código QR",
+    participantes: "Amanda · Herbert",
+    direccion: "Blvd. San Juan Bosco #5003, Colonia Rancho Seco, C.P. 37669",
+    destacado: true,
+    modulos: { mapa:true, telefono:true, reserva:true, nota:true },
+    mapa: "https://maps.app.goo.gl/CvSiWRJmp1WJG9477",
+    telefono: "",
+    telefonoTexto: "Pendiente",
+    reserva: "",
+    reservaTexto: "Pendiente",
+    nota: "Pendiente"
+  },
+  {
+    fecha: "lunes, 27 de abril",
+    inicio: "10:00",
+    fin: "10:15",
+    lugar: "HDI",
+    evento: "Llegada a la compañía con código QR",
+    participantes: "Álex",
+    direccion: "Blvd. San Juan Bosco #5003, Colonia Rancho Seco, C.P. 37669",
+    destacado: false,
+    modulos: { mapa:false, telefono:false, reserva:false, nota:false }
+  },
+  {
+    fecha: "lunes, 27 de abril",
+    inicio: "10:15",
+    fin: "11:00",
+    lugar: "HDI",
+    evento: "Pruebas de espacio y equipo",
+    participantes: "Álex · Herbert",
+    direccion: "Blvd. San Juan Bosco #5003, Colonia Rancho Seco, C.P. 37669",
+    destacado: false,
+    modulos: { mapa:false, telefono:false, reserva:false, nota:false }
+  },
+  {
+    fecha: "lunes, 27 de abril",
+    inicio: "11:00",
+    fin: "12:30",
+    lugar: "HDI",
+    evento: "Charla IA con equipo de IT",
+    participantes: "Herbert",
+    direccion: "Blvd. San Juan Bosco #5003, Colonia Rancho Seco, C.P. 37669",
+    destacado: false,
+    modulos: { mapa:false, telefono:false, reserva:false, nota:false }
+  },
+  {
+    fecha: "lunes, 27 de abril",
+    inicio: "12:30",
+    fin: "14:00",
+    lugar: "HDI",
+    evento: "Charla IA con equipo financiero",
+    participantes: "Herbert",
+    direccion: "Blvd. San Juan Bosco #5003, Colonia Rancho Seco, C.P. 37669",
+    destacado: false,
+    modulos: { mapa:false, telefono:false, reserva:false, nota:false }
+  },
+  {
+    fecha: "lunes, 27 de abril",
+    inicio: "14:30",
+    fin: "",
+    lugar: "Restaurant",
+    evento: "Almuerzo con HDI en restaurant Argentilia",
+    participantes: "Álex · Herbert · Amanda",
+    direccion: "Av Cerro Gordo #270-4, Valle del Campestre, 37150 León de los Aldama, Gto.",
+    destacado: true,
+    modulos: { mapa:true, telefono:true, reserva:true, nota:true },
+    mapa: "https://maps.app.goo.gl/y4foKUHA8WdfFFk16",
+    telefono: "4776772614",
+    reserva: "",
+    reservaTexto: "Pendiente",
+    nota: "Reserva a nombre de Karen-Amalia."
+  }
+];
+
+const timeline = document.getElementById("timeline");
+
+function botonMapa(hito) {
+  if (!hito.modulos.mapa) return "";
+  return hito.mapa
+    ? `<a class="btn primary" href="${hito.mapa}" target="_blank" rel="noopener noreferrer">📍 Mapa</a>`
+    : `<span class="btn">📍 Pendiente</span>`;
+}
+
+function botonTelefono(hito) {
+  if (!hito.modulos.telefono) return "";
+  return hito.telefono
+    ? `<a class="btn" href="tel:${hito.telefono}">☎ Teléfono</a>`
+    : `<span class="btn">☎ ${hito.telefonoTexto || "Pendiente"}</span>`;
+}
+
+function botonReserva(hito) {
+  if (!hito.modulos.reserva) return "";
+  return hito.reserva
+    ? `<a class="btn" href="${hito.reserva}" target="_blank" rel="noopener noreferrer">📎 Reserva</a>`
+    : `<span class="btn">📎 ${hito.reservaTexto || "Pendiente"}</span>`;
+}
+
+function crearHito(hito) {
+  const acciones = [
+    botonMapa(hito),
+    botonTelefono(hito),
+    botonReserva(hito)
+  ].join("");
+
+  const nota = hito.modulos.nota
+    ? `<div class="box"><h3>Nota operativa</h3><p>${hito.nota || "Pendiente"}</p></div>`
+    : "";
+
+  return `
+    <article class="hito ${hito.destacado ? "destacado" : ""}">
+      <div class="hito-top">
+        <div class="hora">
+          ${hito.inicio}
+          <small>${hito.fin ? "a " + hito.fin : "en adelante"}</small>
+        </div>
+
+        <div>
+          <h2>${hito.evento}</h2>
+          <span class="capsula">${hito.lugar}</span>
+          <p class="participantes">${hito.participantes}</p>
+          ${hito.direccion ? `<p class="direccion">${hito.direccion}</p>` : ""}
+        </div>
+      </div>
+
+      ${acciones.trim() ? `<div class="acciones">${acciones}</div>` : ""}
+      ${nota}
+    </article>
+  `;
+}
+
+timeline.innerHTML = HITOS.map(crearHito).join("");
+
+function actualizarReloj() {
+  const ahora = new Date();
+  document.getElementById("reloj").textContent = ahora.toLocaleTimeString("es-MX", {
+    hour: "2-digit",
+    minute: "2-digit"
+  });
+}
+
+actualizarReloj();
+setInterval(actualizarReloj, 1000);
+</script>
+
+</body>
+</html>
