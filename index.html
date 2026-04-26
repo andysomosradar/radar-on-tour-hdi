@@ -464,10 +464,10 @@ const HITOS = [
     direccion: "Blvd. San Juan Bosco #5003, Colonia Rancho Seco, C.P. 37669",
     mostrarDireccion: true,
     principal: true,
-    modulos: { mapa:true, telefono:true, reserva:true, nota:true },
+    modulos: { mapa:true, telefono:false, whatsapp:true, reserva:true, nota:true },
     mapa: "https://maps.app.goo.gl/CvSiWRJmp1WJG9477",
-    telefono: "",
-    telefonoTexto: "Pendiente",
+    whatsapp: "https://wa.me/5214772660439?text=Hola%20Joaqu%C3%ADn%2C%20soy%20del%20equipo%20Radar.%20Estamos%20por%20llegar%20a%20HDI.",
+    whatsappTexto: "WhatsApp Joaquín",
     reserva: "assets/documentos/permiso-amanda.pdf",
     reservaTexto: "Ver permiso",
     nota: "Ingreso mediante código QR (acceso y estacionamiento). Se adjunta el de Amanda y Herbert; el de Álex se enviará el lunes por la mañana."
@@ -548,6 +548,14 @@ function botonTelefono(hito) {
     : `<span class="btn">☎ ${hito.telefonoTexto || "Pendiente"}</span>`;
 }
 
+  function botonWhatsapp(hito) {
+  if (!hito.modulos.whatsapp) return "";
+
+  return hito.whatsapp
+    ? `<a class="btn" href="${hito.whatsapp}" target="_blank" rel="noopener noreferrer">💬 ${hito.whatsappTexto || "WhatsApp"}</a>`
+    : "";
+}
+
 function botonReserva(hito) {
   if (!hito.modulos.reserva) return "";
 
@@ -609,6 +617,7 @@ function crearHito(hito) {
   const acciones = [
     botonMapa(hito),
     botonTelefono(hito),
+    botonWhatsapp(hito),
     botonReserva(hito)
   ].join("");
 
