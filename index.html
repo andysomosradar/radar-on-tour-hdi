@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Radar On Tour - Viaje a León</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,11 +15,11 @@
       --azul: #222F47;
       --celeste: #A3BDCB;
       --beige: #D9C6B1;
-      --gris: #242424;
+      --gris: #252525;
+      --gris-2: #666;
       --fondo: #F5F6F7;
-      --blanco: #FFFFFF;
       --borde: #E5E7EA;
-      --sombra: 0 10px 26px rgba(34,47,71,.10);
+      --blanco: #FFFFFF;
     }
 
     * { box-sizing: border-box; }
@@ -30,274 +31,308 @@
       color: var(--gris);
     }
 
-    a { text-decoration: none; color: inherit; }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .wrap {
+      max-width: 1060px;
+      margin: 0 auto;
+      padding: 0 18px;
+    }
 
     .header {
       background: var(--azul);
       color: white;
-      padding: 18px 20px 22px;
+      padding: 18px 0 22px;
     }
 
-    .header-inner {
-      max-width: 1080px;
-      margin: auto;
-      display: grid;
-      grid-template-columns: 1fr auto;
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
       gap: 18px;
-      align-items: start;
+      margin-bottom: 18px;
     }
 
     .logo {
-      width: 150px;
+      width: 142px;
       display: block;
-      margin-bottom: 18px;
+    }
+
+    .updated {
+      font-size: 12px;
+      color: rgba(255,255,255,.86);
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: 999px;
+      padding: 7px 10px;
+      white-space: nowrap;
     }
 
     .eyebrow {
       margin: 0 0 5px;
-      font-size: 12px;
-      letter-spacing: .08em;
-      text-transform: uppercase;
       color: var(--celeste);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
       font-weight: 500;
     }
 
     h1 {
       margin: 0;
-      font-size: clamp(27px, 5vw, 42px);
-      line-height: 1.05;
+      font-size: clamp(28px, 4.8vw, 41px);
+      line-height: 1.06;
       font-weight: 600;
     }
 
     .desc {
-      margin: 10px 0 0;
-      max-width: 660px;
+      margin: 9px 0 0;
+      max-width: 680px;
       font-size: 15px;
       line-height: 1.45;
-      color: rgba(255,255,255,.86);
+      color: rgba(255,255,255,.85);
       font-weight: 300;
     }
 
-    .updated {
-      font-size: 12px;
-      color: rgba(255,255,255,.85);
-      background: rgba(255,255,255,.09);
-      border: 1px solid rgba(255,255,255,.16);
-      border-radius: 999px;
-      padding: 8px 11px;
-      white-space: nowrap;
-    }
-
     main {
-      max-width: 1080px;
-      margin: auto;
-      padding: 18px 16px 42px;
+      padding: 16px 0 38px;
     }
 
-    .weather-grid {
+    .weather-strip {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 10px;
-      margin-bottom: 18px;
+      gap: 8px;
+      margin-bottom: 14px;
     }
 
-    .weather-card {
+    .weather-item {
       background: white;
       border: 1px solid var(--borde);
-      border-radius: 18px;
-      padding: 13px;
-      box-shadow: 0 8px 20px rgba(34,47,71,.06);
-      min-height: 82px;
+      border-radius: 14px;
+      padding: 10px 11px;
     }
 
-    .weather-card span {
+    .weather-item span {
       display: block;
-      font-size: 12px;
-      color: #666;
-      margin-bottom: 5px;
-    }
-
-    .weather-card strong {
-      display: block;
-      color: var(--azul);
-      font-size: 18px;
-      font-weight: 600;
+      margin-bottom: 3px;
+      color: var(--gris-2);
+      font-size: 11px;
       line-height: 1.2;
+    }
+
+    .weather-item strong {
+      color: var(--azul);
+      font-size: 15px;
+      line-height: 1.2;
+      font-weight: 600;
     }
 
     .timeline {
       display: grid;
-      gap: 12px;
+      gap: 9px;
     }
 
     .hito {
+      position: relative;
       background: white;
       border: 1px solid var(--borde);
-      border-radius: 20px;
-      padding: 15px;
-      box-shadow: 0 7px 18px rgba(34,47,71,.06);
-      transition: transform .16s ease, box-shadow .16s ease;
+      border-left: 5px solid #DADDE1;
+      border-radius: 15px;
+      padding: 12px 13px;
+      transition: transform .14s ease, border-color .14s ease, box-shadow .14s ease;
     }
 
     .hito:hover {
-      transform: translateY(-2px);
-      box-shadow: var(--sombra);
+      transform: translateY(-1px);
+      box-shadow: 0 8px 20px rgba(34,47,71,.08);
     }
 
-    .hito.destacado {
-      border-left: 7px solid var(--beige);
-      background: linear-gradient(90deg, rgba(217,198,177,.20), #fff 22%);
-    }
+    .hito.cat-carro { border-left-color: #B9BEC6; }
+    .hito.cat-hotel { border-left-color: var(--beige); }
+    .hito.cat-hdi { border-left-color: var(--celeste); }
+    .hito.cat-restaurant { border-left-color: var(--azul); }
 
-    .hito-top {
+    .hito-row {
       display: grid;
-      grid-template-columns: 105px 1fr;
-      gap: 14px;
+      grid-template-columns: 118px 1fr;
+      gap: 12px;
       align-items: start;
     }
 
-    .hora {
-      background: var(--azul);
-      color: white;
-      border-radius: 15px;
-      padding: 10px 8px;
+    .time {
+      background: var(--beige);
+      color: var(--azul);
+      border-radius: 999px;
+      padding: 7px 9px;
       text-align: center;
+      font-size: 13px;
+      line-height: 1;
       font-weight: 600;
-      font-size: 15px;
-      line-height: 1.2;
+      white-space: nowrap;
     }
 
-    .hora small {
-      display: block;
-      margin-top: 3px;
-      font-size: 12px;
-      color: rgba(255,255,255,.75);
-      font-weight: 400;
+    .title-line {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 7px;
+      margin-bottom: 4px;
     }
 
-    .hito h2 {
+    .title-line h2 {
       margin: 0;
       color: var(--azul);
-      font-size: 20px;
-      line-height: 1.2;
+      font-size: 17px;
+      line-height: 1.25;
       font-weight: 600;
     }
 
-    .capsula {
-      display: inline-block;
-      margin: 7px 0 0;
-      background: rgba(163,189,203,.35);
-      color: var(--azul);
-      padding: 6px 10px;
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid var(--borde);
       border-radius: 999px;
-      font-size: 12px;
+      padding: 4px 8px;
+      color: var(--azul);
+      background: #FAFAFA;
+      font-size: 11px;
       font-weight: 600;
+      line-height: 1;
+      white-space: nowrap;
     }
 
-    .participantes {
-      margin: 8px 0 0;
-      font-size: 13px;
-      color: #555;
-      font-weight: 500;
-    }
-
-    .direccion {
-      margin: 7px 0 0;
-      font-size: 13px;
-      color: #666;
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      color: var(--gris-2);
+      font-size: 12.5px;
       line-height: 1.35;
     }
 
-    .acciones {
-      margin-top: 13px;
+    .address {
+      margin-top: 5px;
+      color: #555;
+      font-size: 12.5px;
+      line-height: 1.35;
+    }
+
+    .actions {
+      margin-top: 9px;
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 8px;
+      gap: 7px;
     }
 
     .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 34px;
       border: 1px solid var(--borde);
-      background: white;
+      border-radius: 999px;
+      background: #FAFAFA;
       color: var(--azul);
-      padding: 9px 10px;
-      border-radius: 13px;
-      font-size: 13px;
+      padding: 8px 10px;
+      font-size: 12.5px;
       font-weight: 600;
-      cursor: pointer;
       text-align: center;
-      transition: transform .15s ease, background .15s ease, border .15s ease;
+      cursor: pointer;
+      transition: background .14s ease, border-color .14s ease, transform .14s ease;
     }
 
     .btn:hover {
-      transform: translateY(-2px);
-      background: #F1F5F7;
+      background: rgba(163,189,203,.24);
       border-color: var(--celeste);
+      transform: translateY(-1px);
     }
 
-    .btn.primary {
-      background: var(--azul);
-      color: white;
-      border-color: var(--azul);
-    }
-
-    .box {
-      margin-top: 11px;
+    .note {
+      margin-top: 8px;
+      background: #FBFBFB;
       border: 1px solid var(--borde);
-      border-radius: 15px;
-      padding: 11px 12px;
-      background: #FAFAFA;
+      border-radius: 12px;
+      padding: 8px 10px;
+      font-size: 12.5px;
+      line-height: 1.35;
+      color: #444;
     }
 
-    .box h3 {
-      margin: 0 0 5px;
+    .note strong {
       color: var(--azul);
-      font-size: 14px;
       font-weight: 600;
     }
 
-    .box p {
-      margin: 0;
-      font-size: 13px;
-      line-height: 1.4;
-    }
-
     .footer {
-      margin-top: 24px;
+      margin-top: 22px;
+      color: #777;
       text-align: center;
       font-size: 12px;
-      color: #666;
     }
 
     @media (max-width: 760px) {
-      .header-inner { grid-template-columns: 1fr; }
-      .updated { width: fit-content; }
+      .wrap { padding: 0 14px; }
 
-      .weather-grid {
+      .header {
+        padding: 16px 0 20px;
+      }
+
+      .header-top {
+        align-items: center;
+        margin-bottom: 15px;
+      }
+
+      .logo { width: 128px; }
+
+      .updated {
+        font-size: 11px;
+        padding: 6px 8px;
+      }
+
+      .weather-strip {
         grid-template-columns: repeat(2, 1fr);
       }
 
-      .hito-top {
+      .hito-row {
         grid-template-columns: 1fr;
-        gap: 10px;
+        gap: 8px;
       }
 
-      .hora {
+      .time {
         width: fit-content;
-        min-width: 105px;
       }
 
-      .acciones {
+      .actions {
         grid-template-columns: repeat(3, minmax(0, 1fr));
       }
 
       .btn {
         font-size: 12px;
-        padding: 9px 7px;
+        padding: 8px 7px;
       }
     }
 
-    @media (max-width: 390px) {
-      .acciones {
+    @media (max-width: 420px) {
+      .header-top {
+        gap: 10px;
+      }
+
+      .updated {
+        max-width: 145px;
+        text-align: right;
+        line-height: 1.2;
+      }
+
+      .weather-strip {
+        gap: 7px;
+      }
+
+      .weather-item {
+        padding: 9px;
+      }
+
+      .actions {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
@@ -307,53 +342,60 @@
 <body>
 
 <header class="header">
-  <div class="header-inner">
-    <div>
+  <div class="wrap">
+    <div class="header-top">
       <img class="logo" src="assets/radar-logotipo-blanco.png" alt="Radar">
-      <p class="eyebrow">Hoja de viaje</p>
-      <h1>Radar On Tour - Viaje a León</h1>
-      <p class="desc">Itinerario ejecutivo con accesos rápidos, clima, mapas, contactos y documentos clave.</p>
+      <div class="updated">Actualizado: 26 abril · 21:30</div>
     </div>
 
-    <div class="updated">Actualizado: 26 abril · 21:30</div>
+    <p class="eyebrow">Hoja de viaje</p>
+    <h1>Radar On Tour - Viaje a León</h1>
+    <p class="desc">
+      Itinerario ejecutivo con accesos rápidos a mapas, contactos, clima, reservas y notas operativas.
+    </p>
   </div>
 </header>
 
 <main>
+  <div class="wrap">
 
-  <section class="weather-grid">
-    <div class="weather-card">
-      <span>Hora actual</span>
-      <strong id="reloj">--:--</strong>
-    </div>
-    <div class="weather-card">
-      <span>Clima actual · León</span>
-      <strong>☀️ 18°C · despejado</strong>
-    </div>
-    <div class="weather-card">
-      <span>Domingo noche</span>
-      <strong>🌤️ 18°C · fresco</strong>
-    </div>
-    <div class="weather-card">
-      <span>Lunes</span>
-      <strong>☀️ 34° / 18°</strong>
-    </div>
-  </section>
+    <section class="weather-strip">
+      <div class="weather-item">
+        <span>Hora actual</span>
+        <strong id="reloj">--:--</strong>
+      </div>
 
-  <section id="timeline" class="timeline"></section>
+      <div class="weather-item">
+        <span>Clima actual · León</span>
+        <strong>☀️ 18°C · despejado</strong>
+      </div>
 
-  <footer class="footer">
-    Radar On Tour · Viaje a León · 26 y 27 de abril de 2026
-  </footer>
+      <div class="weather-item">
+        <span>Domingo noche</span>
+        <strong>🌤️ 18°C · fresco</strong>
+      </div>
 
+      <div class="weather-item">
+        <span>Lunes</span>
+        <strong>☀️ 34° / 18°</strong>
+      </div>
+    </section>
+
+    <section id="timeline" class="timeline"></section>
+
+    <footer class="footer">
+      Radar On Tour · Viaje a León · 26 y 27 de abril de 2026
+    </footer>
+
+  </div>
 </main>
 
 <script>
 /*
   ============================================================
   ZONA EDITABLE
-  Para agregar o borrar actividades, modifica solo esta lista.
-  destacado: true = hito principal con widgets completos.
+  Aquí editas actividades, links, teléfonos, reservas y notas.
+  Para que algo aparezca, marca el módulo correspondiente en true.
   ============================================================
 */
 
@@ -366,7 +408,7 @@ const HITOS = [
     evento: "Viaje CDMX a León",
     participantes: "Amanda · Herbert",
     direccion: "",
-    destacado: false,
+    mostrarDireccion: false,
     modulos: { mapa:false, telefono:false, reserva:false, nota:true },
     nota: "Clima frío en la noche. Llevar chamarra."
   },
@@ -378,7 +420,7 @@ const HITOS = [
     evento: "Desplazamiento al Hotel Hyatt Centric Campestre León",
     participantes: "Amanda · Herbert",
     direccion: "P.º de los Insurgentes 3360, 37330 León de los Aldama, Gto.",
-    destacado: true,
+    mostrarDireccion: true,
     modulos: { mapa:true, telefono:true, reserva:true, nota:true },
     mapa: "https://maps.app.goo.gl/nfHsYeEXKF1U8ZzV8",
     telefono: "4776371234",
@@ -393,8 +435,8 @@ const HITOS = [
     lugar: "Hotel",
     evento: "Check-in",
     participantes: "Amanda · Herbert",
-    direccion: "P.º de los Insurgentes 3360, 37330 León de los Aldama, Gto.",
-    destacado: false,
+    direccion: "",
+    mostrarDireccion: false,
     modulos: { mapa:false, telefono:false, reserva:false, nota:false }
   },
   {
@@ -404,8 +446,8 @@ const HITOS = [
     lugar: "Hotel",
     evento: "Acomodación",
     participantes: "Amanda · Herbert",
-    direccion: "P.º de los Insurgentes 3360, 37330 León de los Aldama, Gto.",
-    destacado: false,
+    direccion: "",
+    mostrarDireccion: false,
     modulos: { mapa:false, telefono:false, reserva:false, nota:false }
   },
   {
@@ -415,8 +457,8 @@ const HITOS = [
     lugar: "Hotel",
     evento: "Cena — comprar en el hotel",
     participantes: "Amanda · Herbert",
-    direccion: "P.º de los Insurgentes 3360, 37330 León de los Aldama, Gto.",
-    destacado: false,
+    direccion: "",
+    mostrarDireccion: false,
     modulos: { mapa:false, telefono:false, reserva:false, nota:false }
   },
   {
@@ -426,8 +468,8 @@ const HITOS = [
     lugar: "Hotel",
     evento: "Desayuno buffet",
     participantes: "Amanda · Herbert",
-    direccion: "P.º de los Insurgentes 3360, 37330 León de los Aldama, Gto.",
-    destacado: false,
+    direccion: "",
+    mostrarDireccion: false,
     modulos: { mapa:false, telefono:false, reserva:false, nota:false }
   },
   {
@@ -437,8 +479,8 @@ const HITOS = [
     lugar: "Hotel",
     evento: "Preparación y checkout",
     participantes: "Amanda · Herbert",
-    direccion: "P.º de los Insurgentes 3360, 37330 León de los Aldama, Gto.",
-    destacado: false,
+    direccion: "",
+    mostrarDireccion: false,
     modulos: { mapa:false, telefono:false, reserva:false, nota:false }
   },
   {
@@ -449,7 +491,7 @@ const HITOS = [
     evento: "Llegada a la compañía con código QR",
     participantes: "Amanda · Herbert",
     direccion: "Blvd. San Juan Bosco #5003, Colonia Rancho Seco, C.P. 37669",
-    destacado: true,
+    mostrarDireccion: true,
     modulos: { mapa:true, telefono:true, reserva:true, nota:true },
     mapa: "https://maps.app.goo.gl/CvSiWRJmp1WJG9477",
     telefono: "",
@@ -465,8 +507,8 @@ const HITOS = [
     lugar: "HDI",
     evento: "Llegada a la compañía con código QR",
     participantes: "Álex",
-    direccion: "Blvd. San Juan Bosco #5003, Colonia Rancho Seco, C.P. 37669",
-    destacado: false,
+    direccion: "",
+    mostrarDireccion: false,
     modulos: { mapa:false, telefono:false, reserva:false, nota:false }
   },
   {
@@ -476,8 +518,8 @@ const HITOS = [
     lugar: "HDI",
     evento: "Pruebas de espacio y equipo",
     participantes: "Álex · Herbert",
-    direccion: "Blvd. San Juan Bosco #5003, Colonia Rancho Seco, C.P. 37669",
-    destacado: false,
+    direccion: "",
+    mostrarDireccion: false,
     modulos: { mapa:false, telefono:false, reserva:false, nota:false }
   },
   {
@@ -487,8 +529,8 @@ const HITOS = [
     lugar: "HDI",
     evento: "Charla IA con equipo de IT",
     participantes: "Herbert",
-    direccion: "Blvd. San Juan Bosco #5003, Colonia Rancho Seco, C.P. 37669",
-    destacado: false,
+    direccion: "",
+    mostrarDireccion: false,
     modulos: { mapa:false, telefono:false, reserva:false, nota:false }
   },
   {
@@ -498,8 +540,8 @@ const HITOS = [
     lugar: "HDI",
     evento: "Charla IA con equipo financiero",
     participantes: "Herbert",
-    direccion: "Blvd. San Juan Bosco #5003, Colonia Rancho Seco, C.P. 37669",
-    destacado: false,
+    direccion: "",
+    mostrarDireccion: false,
     modulos: { mapa:false, telefono:false, reserva:false, nota:false }
   },
   {
@@ -510,7 +552,7 @@ const HITOS = [
     evento: "Almuerzo con HDI en restaurant Argentilia",
     participantes: "Álex · Herbert · Amanda",
     direccion: "Av Cerro Gordo #270-4, Valle del Campestre, 37150 León de los Aldama, Gto.",
-    destacado: true,
+    mostrarDireccion: true,
     modulos: { mapa:true, telefono:true, reserva:true, nota:true },
     mapa: "https://maps.app.goo.gl/y4foKUHA8WdfFFk16",
     telefono: "4776772614",
@@ -520,19 +562,37 @@ const HITOS = [
   }
 ];
 
+/*
+  ============================================================
+  MOTOR VISUAL
+  No tocar salvo que quieras cambiar cómo se arma la hoja.
+  ============================================================
+*/
+
 const timeline = document.getElementById("timeline");
+
+function normalizarCategoria(lugar) {
+  return lugar
+    .toLowerCase()
+    .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+    .replace(/\s+/g, "-");
+}
+
+function rangoHora(hito) {
+  return hito.fin ? `${hito.inicio} – ${hito.fin}` : `${hito.inicio}`;
+}
 
 function botonMapa(hito) {
   if (!hito.modulos.mapa) return "";
   return hito.mapa
-    ? `<a class="btn primary" href="${hito.mapa}" target="_blank" rel="noopener noreferrer">📍 Mapa</a>`
-    : `<span class="btn">📍 Pendiente</span>`;
+    ? `<a class="btn" href="${hito.mapa}" target="_blank" rel="noopener noreferrer">📍 Abrir en Maps</a>`
+    : `<span class="btn">📍 Mapa pendiente</span>`;
 }
 
 function botonTelefono(hito) {
   if (!hito.modulos.telefono) return "";
   return hito.telefono
-    ? `<a class="btn" href="tel:${hito.telefono}">☎ Teléfono</a>`
+    ? `<a class="btn" href="tel:${hito.telefono}">☎ Llamar</a>`
     : `<span class="btn">☎ ${hito.telefonoTexto || "Pendiente"}</span>`;
 }
 
@@ -544,6 +604,8 @@ function botonReserva(hito) {
 }
 
 function crearHito(hito) {
+  const categoria = normalizarCategoria(hito.lugar);
+
   const acciones = [
     botonMapa(hito),
     botonTelefono(hito),
@@ -551,27 +613,32 @@ function crearHito(hito) {
   ].join("");
 
   const nota = hito.modulos.nota
-    ? `<div class="box"><h3>Nota operativa</h3><p>${hito.nota || "Pendiente"}</p></div>`
+    ? `<div class="note"><strong>Nota:</strong> ${hito.nota || "Pendiente"}</div>`
     : "";
 
   return `
-    <article class="hito ${hito.destacado ? "destacado" : ""}">
-      <div class="hito-top">
-        <div class="hora">
-          ${hito.inicio}
-          <small>${hito.fin ? "a " + hito.fin : "en adelante"}</small>
-        </div>
+    <article class="hito cat-${categoria}">
+      <div class="hito-row">
+        <div class="time">${rangoHora(hito)}</div>
 
         <div>
-          <h2>${hito.evento}</h2>
-          <span class="capsula">${hito.lugar}</span>
-          <p class="participantes">${hito.participantes}</p>
-          ${hito.direccion ? `<p class="direccion">${hito.direccion}</p>` : ""}
+          <div class="title-line">
+            <h2>${hito.evento}</h2>
+            <span class="tag">${hito.lugar}</span>
+          </div>
+
+          <div class="meta">
+            <span>${hito.fecha}</span>
+            <span>·</span>
+            <span>${hito.participantes}</span>
+          </div>
+
+          ${hito.mostrarDireccion && hito.direccion ? `<div class="address">${hito.direccion}</div>` : ""}
+
+          ${acciones.trim() ? `<div class="actions">${acciones}</div>` : ""}
+          ${nota}
         </div>
       </div>
-
-      ${acciones.trim() ? `<div class="acciones">${acciones}</div>` : ""}
-      ${nota}
     </article>
   `;
 }
@@ -580,6 +647,7 @@ timeline.innerHTML = HITOS.map(crearHito).join("");
 
 function actualizarReloj() {
   const ahora = new Date();
+
   document.getElementById("reloj").textContent = ahora.toLocaleTimeString("es-MX", {
     hour: "2-digit",
     minute: "2-digit"
