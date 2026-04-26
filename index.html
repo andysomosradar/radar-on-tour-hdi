@@ -37,7 +37,7 @@
     }
 
     .wrap {
-      max-width: 1060px;
+      max-width: 920px;
       margin: 0 auto;
       padding: 0 18px;
     }
@@ -45,24 +45,24 @@
     .header {
       background: var(--azul);
       color: white;
-      padding: 18px 0 22px;
+      padding: 18px 0 21px;
     }
 
     .header-top {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      gap: 18px;
-      margin-bottom: 18px;
+      gap: 16px;
+      margin-bottom: 17px;
     }
 
     .logo {
-      width: 142px;
+      width: 138px;
       display: block;
     }
 
     .updated {
-      font-size: 12px;
+      font-size: 11.5px;
       color: rgba(255,255,255,.86);
       border: 1px solid rgba(255,255,255,.18);
       border-radius: 999px;
@@ -81,36 +81,36 @@
 
     h1 {
       margin: 0;
-      font-size: clamp(28px, 4.8vw, 41px);
-      line-height: 1.06;
+      font-size: clamp(27px, 4.8vw, 39px);
+      line-height: 1.05;
       font-weight: 600;
     }
 
     .desc {
-      margin: 9px 0 0;
-      max-width: 680px;
-      font-size: 15px;
-      line-height: 1.45;
-      color: rgba(255,255,255,.85);
+      margin: 8px 0 0;
+      max-width: 660px;
+      font-size: 14.5px;
+      line-height: 1.42;
+      color: rgba(255,255,255,.84);
       font-weight: 300;
     }
 
     main {
-      padding: 16px 0 38px;
+      padding: 14px 0 36px;
     }
 
     .weather-strip {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 8px;
-      margin-bottom: 14px;
+      gap: 7px;
+      margin-bottom: 13px;
     }
 
     .weather-item {
       background: white;
       border: 1px solid var(--borde);
-      border-radius: 14px;
-      padding: 10px 11px;
+      border-radius: 13px;
+      padding: 9px 10px;
     }
 
     .weather-item span {
@@ -123,29 +123,44 @@
 
     .weather-item strong {
       color: var(--azul);
-      font-size: 15px;
+      font-size: 14.5px;
       line-height: 1.2;
       font-weight: 600;
     }
 
     .timeline {
       display: grid;
-      gap: 9px;
+      gap: 11px;
+    }
+
+    .day-group {
+      display: grid;
+      gap: 8px;
+    }
+
+    .day-divider {
+      background: var(--azul);
+      color: white;
+      border-radius: 13px;
+      padding: 10px 13px;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 1;
+      letter-spacing: .01em;
     }
 
     .hito {
-      position: relative;
       background: white;
       border: 1px solid var(--borde);
       border-left: 5px solid #DADDE1;
       border-radius: 15px;
-      padding: 12px 13px;
+      padding: 11px 12px;
       transition: transform .14s ease, border-color .14s ease, box-shadow .14s ease;
     }
 
     .hito:hover {
       transform: translateY(-1px);
-      box-shadow: 0 8px 20px rgba(34,47,71,.08);
+      box-shadow: 0 8px 18px rgba(34,47,71,.075);
     }
 
     .hito.cat-carro { border-left-color: #B9BEC6; }
@@ -156,13 +171,13 @@
     .hito-row {
       display: grid;
       grid-template-columns: 118px 1fr;
-      gap: 12px;
+      gap: 11px;
       align-items: start;
     }
 
     .time {
-      background: var(--beige);
-      color: var(--azul);
+      background: var(--celeste);
+      color: white;
       border-radius: 999px;
       padding: 7px 9px;
       text-align: center;
@@ -183,8 +198,8 @@
     .title-line h2 {
       margin: 0;
       color: var(--azul);
-      font-size: 17px;
-      line-height: 1.25;
+      font-size: 16.5px;
+      line-height: 1.22;
       font-weight: 600;
     }
 
@@ -205,37 +220,37 @@
     .meta {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
+      gap: 6px;
       color: var(--gris-2);
       font-size: 12.5px;
-      line-height: 1.35;
+      line-height: 1.3;
     }
 
     .address {
       margin-top: 5px;
       color: #555;
       font-size: 12.5px;
-      line-height: 1.35;
+      line-height: 1.33;
     }
 
     .actions {
-      margin-top: 9px;
+      margin-top: 8px;
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 7px;
+      gap: 6px;
     }
 
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 34px;
+      min-height: 32px;
       border: 1px solid var(--borde);
       border-radius: 999px;
       background: #FAFAFA;
       color: var(--azul);
-      padding: 8px 10px;
-      font-size: 12.5px;
+      padding: 7px 9px;
+      font-size: 12.3px;
       font-weight: 600;
       text-align: center;
       cursor: pointer;
@@ -243,19 +258,19 @@
     }
 
     .btn:hover {
-      background: rgba(163,189,203,.24);
+      background: rgba(163,189,203,.26);
       border-color: var(--celeste);
       transform: translateY(-1px);
     }
 
     .note {
-      margin-top: 8px;
+      margin-top: 7px;
       background: #FBFBFB;
       border: 1px solid var(--borde);
-      border-radius: 12px;
-      padding: 8px 10px;
+      border-radius: 11px;
+      padding: 7px 9px;
       font-size: 12.5px;
-      line-height: 1.35;
+      line-height: 1.33;
       color: #444;
     }
 
@@ -265,7 +280,7 @@
     }
 
     .footer {
-      margin-top: 22px;
+      margin-top: 21px;
       color: #777;
       text-align: center;
       font-size: 12px;
@@ -275,15 +290,15 @@
       .wrap { padding: 0 14px; }
 
       .header {
-        padding: 16px 0 20px;
+        padding: 16px 0 19px;
       }
 
       .header-top {
         align-items: center;
-        margin-bottom: 15px;
+        margin-bottom: 14px;
       }
 
-      .logo { width: 128px; }
+      .logo { width: 126px; }
 
       .updated {
         font-size: 11px;
@@ -308,8 +323,8 @@
       }
 
       .btn {
-        font-size: 12px;
-        padding: 8px 7px;
+        font-size: 11.8px;
+        padding: 7px 6px;
       }
     }
 
@@ -322,6 +337,7 @@
         max-width: 145px;
         text-align: right;
         line-height: 1.2;
+        white-space: normal;
       }
 
       .weather-strip {
@@ -329,7 +345,7 @@
       }
 
       .weather-item {
-        padding: 9px;
+        padding: 8px 9px;
       }
 
       .actions {
@@ -395,13 +411,13 @@
   ============================================================
   ZONA EDITABLE
   Aquí editas actividades, links, teléfonos, reservas y notas.
-  Para que algo aparezca, marca el módulo correspondiente en true.
+  La fecha ya no aparece dentro de cada tarjeta: agrupa por día.
   ============================================================
 */
 
 const HITOS = [
   {
-    fecha: "domingo, 26 de abril",
+    fecha: "Domingo, 26 de abril",
     inicio: "17:00",
     fin: "21:00",
     lugar: "Carro",
@@ -413,7 +429,7 @@ const HITOS = [
     nota: "Clima frío en la noche. Llevar chamarra."
   },
   {
-    fecha: "domingo, 26 de abril",
+    fecha: "Domingo, 26 de abril",
     inicio: "21:00",
     fin: "21:35",
     lugar: "Carro",
@@ -429,7 +445,7 @@ const HITOS = [
     nota: "Habitación pagada. Incluye desayuno buffet."
   },
   {
-    fecha: "domingo, 26 de abril",
+    fecha: "Domingo, 26 de abril",
     inicio: "21:35",
     fin: "22:00",
     lugar: "Hotel",
@@ -440,7 +456,7 @@ const HITOS = [
     modulos: { mapa:false, telefono:false, reserva:false, nota:false }
   },
   {
-    fecha: "domingo, 26 de abril",
+    fecha: "Domingo, 26 de abril",
     inicio: "22:00",
     fin: "22:15",
     lugar: "Hotel",
@@ -451,7 +467,7 @@ const HITOS = [
     modulos: { mapa:false, telefono:false, reserva:false, nota:false }
   },
   {
-    fecha: "domingo, 26 de abril",
+    fecha: "Domingo, 26 de abril",
     inicio: "22:15",
     fin: "23:00",
     lugar: "Hotel",
@@ -462,7 +478,7 @@ const HITOS = [
     modulos: { mapa:false, telefono:false, reserva:false, nota:false }
   },
   {
-    fecha: "lunes, 27 de abril",
+    fecha: "Lunes, 27 de abril",
     inicio: "08:30",
     fin: "09:15",
     lugar: "Hotel",
@@ -473,7 +489,7 @@ const HITOS = [
     modulos: { mapa:false, telefono:false, reserva:false, nota:false }
   },
   {
-    fecha: "lunes, 27 de abril",
+    fecha: "Lunes, 27 de abril",
     inicio: "09:15",
     fin: "09:45",
     lugar: "Hotel",
@@ -484,7 +500,7 @@ const HITOS = [
     modulos: { mapa:false, telefono:false, reserva:false, nota:false }
   },
   {
-    fecha: "lunes, 27 de abril",
+    fecha: "Lunes, 27 de abril",
     inicio: "10:00",
     fin: "10:15",
     lugar: "HDI",
@@ -501,7 +517,7 @@ const HITOS = [
     nota: "Pendiente"
   },
   {
-    fecha: "lunes, 27 de abril",
+    fecha: "Lunes, 27 de abril",
     inicio: "10:00",
     fin: "10:15",
     lugar: "HDI",
@@ -512,7 +528,7 @@ const HITOS = [
     modulos: { mapa:false, telefono:false, reserva:false, nota:false }
   },
   {
-    fecha: "lunes, 27 de abril",
+    fecha: "Lunes, 27 de abril",
     inicio: "10:15",
     fin: "11:00",
     lugar: "HDI",
@@ -523,7 +539,7 @@ const HITOS = [
     modulos: { mapa:false, telefono:false, reserva:false, nota:false }
   },
   {
-    fecha: "lunes, 27 de abril",
+    fecha: "Lunes, 27 de abril",
     inicio: "11:00",
     fin: "12:30",
     lugar: "HDI",
@@ -534,7 +550,7 @@ const HITOS = [
     modulos: { mapa:false, telefono:false, reserva:false, nota:false }
   },
   {
-    fecha: "lunes, 27 de abril",
+    fecha: "Lunes, 27 de abril",
     inicio: "12:30",
     fin: "14:00",
     lugar: "HDI",
@@ -545,7 +561,7 @@ const HITOS = [
     modulos: { mapa:false, telefono:false, reserva:false, nota:false }
   },
   {
-    fecha: "lunes, 27 de abril",
+    fecha: "Lunes, 27 de abril",
     inicio: "14:30",
     fin: "",
     lugar: "Restaurant",
@@ -565,7 +581,7 @@ const HITOS = [
 /*
   ============================================================
   MOTOR VISUAL
-  No tocar salvo que quieras cambiar cómo se arma la hoja.
+  Agrupa los hitos por fecha y genera la hoja.
   ============================================================
 */
 
@@ -628,8 +644,6 @@ function crearHito(hito) {
           </div>
 
           <div class="meta">
-            <span>${hito.fecha}</span>
-            <span>·</span>
             <span>${hito.participantes}</span>
           </div>
 
@@ -643,7 +657,26 @@ function crearHito(hito) {
   `;
 }
 
-timeline.innerHTML = HITOS.map(crearHito).join("");
+function agruparPorFecha(hitos) {
+  return hitos.reduce((grupos, hito) => {
+    if (!grupos[hito.fecha]) grupos[hito.fecha] = [];
+    grupos[hito.fecha].push(hito);
+    return grupos;
+  }, {});
+}
+
+function renderTimeline() {
+  const grupos = agruparPorFecha(HITOS);
+
+  timeline.innerHTML = Object.entries(grupos).map(([fecha, hitos]) => `
+    <div class="day-group">
+      <div class="day-divider">${fecha}</div>
+      ${hitos.map(crearHito).join("")}
+    </div>
+  `).join("");
+}
+
+renderTimeline();
 
 function actualizarReloj() {
   const ahora = new Date();
